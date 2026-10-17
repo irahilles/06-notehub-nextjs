@@ -41,3 +41,13 @@ export async function deleteNote(id: string) {
     const response = await axios.delete<Note>(`${URL}/${id}`, { headers: { Authorization: `Bearer ${myKey}` } })
     return response.data;
 }
+
+export async function fetchNoteById(id: string): Promise<Note> {
+  const response = await axios.get<Note>(`${URL}/${id}`, {
+    headers: {
+      Authorization: `Bearer ${myKey}`,
+    },
+  });
+
+  return response.data;
+}
